@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FootballGame.Models.Teams>
+
+@{
+    ViewData["Title"] = "TeamList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>TeamList</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.captain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numberofPlayer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.captain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberofPlayer)
+            </td>
+            <td>
+                <a asp-action="AddFav" asp-route-id="@item.ID" class="btn btn-primary">Fav</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
